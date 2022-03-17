@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Extra Credit</title>
+    <style type="text/css" >
+        #slide img {
+            width:500px;
+        }
+    </style>
+    <script 
+    src="https://code.jquery.com/jquery-3.6.0.js" 
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" 
+    crossorigin="anonymous"></script>
+    <script>
+        images = ["img1.jpg", "img2.jpg","img3.jpg","img4.jpg","img5.jpg"]
+        var currIdx = 1;
+
+        function fadeOutImg() {
+            $("#slide img").fadeOut(2000, fadeInImg);
+        }
+
+        function fadeInImg() {
+            currIdx++;
+            currIdx = currIdx == images.length?0: currIdx;
+            $("#slide img").attr("src", "images/" + images[currIdx]);
+            $("#slide img").fadeIn(2000, fadeOutImg);
+        }
+
+        $(document).ready(function() {
+                  $("#start").click(fadeOutImg);
+            $("#stop").click(function() {
+                $("#slide img").stop().fadeIn();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="slide">
+        <img src="images/img1.jpg" style="width:500px"><br>
+        <input type="button" id="start" value="Start">
+        <input type="button" id="stop" value="Stop">
+    </div>
+</body>
+</html>
