@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Order for Joe's Hotdogs</title>
+    <script>
+        function purchase() {
+            var num_hotdogs = document.getElementById("numHotdogs").value;
+            var num_fries = document.getElementById("numFries").value;
+            var num_sodas = document.getElementById("numSodas").value;
+
+            if (num_hotdogs + num_fries + num_sodas == 0) {
+                alert("You need to order at least one item.");
+            }
+
+            var hotdogs = " hotdog";
+            if (num_hotdogs != 1) {
+                hotdogs += "s";
+            }
+            var fries = " box of fries";
+            if (num_fries != 1) {
+                fries = " boxes of fries";
+            }
+            var sodas = " soda";
+            if (num_sodas != 1) {
+                sodas += "s";
+            }
+
+            var output = "";
+            output += "You ordered: " + num_hotdogs + hotdogs + ", " 
+                        + num_fries + fries + ", and "
+                        + num_sodas + sodas + ".<br>";
+
+
+            var subtotal = (num_hotdogs*3.75)+(num_fries*2)+(num_sodas*1.8);
+            output += "Subtotal: $" + subtotal + "<br>";
+
+            if (subtotal >= 20) {
+                var discount = Math.round(subtotal*10)/100;
+                subtotal = Math.round((subtotal-discount)*100)/100;
+                output += "You got a discount! You saved $" + discount 
+                            + ". New subtotal: $" + subtotal + "<br>";
+            } 
+
+            var tax = Math.round(subtotal*6.25)/100;
+            output += "Tax: $" + tax + "<br>";
+            
+            subtotal += tax;
+            subtotal = Math.round(subtotal*100)/100;
+            output += "Final subtotal: $" + subtotal + "<br>";
+
+            document.getElementById("output").innerHTML = output;
+        }
+    </script>
+</head>
+    <h1>Online Order for Joe's Hotdogs</h1>
+    <div>
+        <form>
+            <table>
+                <tr>
+                    <p>Hotdogs: $3.75</p>
+                    <select id="numHotdogs">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </tr>
+                <tr>
+                    <p>French Fries: $2.00</p>
+                    <select id="numFries">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </tr>
+                <tr>
+                    <p>Sodas: $1.80</p>
+                    <select id="numSodas">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                </tr>
+            </table>
+            <input type="button" value="Submit" onclick="purchase()">        
+        </form>
+    </div>
+    <div>
+        <p id="output"></p>
+    </div>
+</html>
