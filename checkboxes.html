@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Part 2: Checkboxes</title>
+    <script>
+        function doCheckAll() {
+            if (document.getElementById("checkAll").checked) {
+                document.getElementById("checkAllLabel").innerHTML = "Uncheck All";
+                document.getElementById("first").checked = true;
+                document.getElementById("second").checked = true;
+                document.getElementById("third").checked = true;
+                document.getElementById("fourth").checked = true;
+            } else {
+                document.getElementById("checkAllLabel").innerHTML = "Check All";
+                document.getElementById("first").checked = false;
+                document.getElementById("second").checked = false;
+                document.getElementById("third").checked = false;
+                document.getElementById("fourth").checked = false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Part 2: Checkboxes</h1>
+    <form>
+        <input type="checkbox" id="checkAll" onclick="doCheckAll()">
+        <label for="checkAll" id="checkAllLabel">Check All</label><br><br>
+
+        <input type="checkbox" id="first">
+        <label for="first">First</label><br>
+        <input type="checkbox" id="second">
+        <label for="">Second</label><br>
+        <input type="checkbox" id="third">
+        <label for="">Third</label><br>
+        <input type="checkbox" id="fourth">
+        <label for="">Fourth</label><br>
+    </form>
+</body>
+</html>
