@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Part 1: Jump</title>
+    <script>
+        function jumpFunction() {
+            if (document.getElementById("jump").value == "JUMP >") {
+                var box1_text = document.getElementById("box1").value;
+                document.getElementById("box2").value = box1_text;
+                document.getElementById("box1").value = "";
+                document.getElementById("jump").value = "< JUMP";
+            } else {
+                var box2_text = document.getElementById("box2").value;
+                document.getElementById("box1").value = box2_text;
+                document.getElementById("box2").value = "";
+                document.getElementById("jump").value = "JUMP >";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Part 1: Jump</h1>
+    <form>
+        <input type="text" id="box1" value="">
+        &nbsp;&nbsp;&nbsp;
+        <input type="button" id="jump" value="JUMP >" onclick="jumpFunction()">
+        &nbsp;&nbsp;&nbsp;
+        <input type="text" id="box2" value="">
+    </form>
+</body>
+</html>
